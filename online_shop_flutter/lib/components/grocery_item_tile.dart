@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class GroceryItemTile extends StatelessWidget {
   final String imageUrl;
   final String name;
   final String price;
   final color;
+  void Function()? onPressed;
 
-  const GroceryItemTile({
+  GroceryItemTile({
     super.key,
     required this.imageUrl,
     required this.name,
     required this.price,
-    this.color,
+    required this.color,
+    required this.onPressed,
   });
 
   @override
@@ -30,9 +33,14 @@ class GroceryItemTile extends StatelessWidget {
           children: [
             Image.asset(imageUrl, height: 84),
             Text(name, style: GoogleFonts.poppins(color: Colors.black)),
-            MaterialButton(onPressed: (){},
-            color: color[800],
-            child: Text('\$' + price, style: GoogleFonts.poppins(color: Colors.white),),)
+            MaterialButton(
+              onPressed: onPressed,
+              color: color[800],
+              child: Text(
+                '\$' + price,
+                style: GoogleFonts.poppins(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ),

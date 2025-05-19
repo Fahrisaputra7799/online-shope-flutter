@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:online_shop_flutter/screens/cart_screen.dart';
 import 'package:online_shop_flutter/screens/home_screen.dart';
 
 class NavBottom extends StatelessWidget {
@@ -44,7 +45,11 @@ class NavBottom extends StatelessWidget {
             _SocialIcon(
               icon: FontAwesomeIcons.cartShopping,
               tooltip: "Blog",
-              onPressed: () {},
+              onPressed:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CartScreen()),
+                  ),
             ),
             _SocialIcon(
               icon: FontAwesomeIcons.heartCircleCheck,

@@ -17,9 +17,7 @@ class HomeScreen extends StatelessWidget {
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 430, maxHeight: 932),
             child: Container(
-              decoration: BoxDecoration(
-                color:Color(0xFFF1F5F9),
-              ),
+              decoration: BoxDecoration(color: Color(0xFFF1F5F9)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -35,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Text(
-                      'Let\'s order fresh coconut for you',
+                      'Time to treat yourself with fresh fruit!',
                       style: GoogleFonts.notoSerif(
                         color: Colors.black,
                         fontSize: 36,
@@ -44,22 +42,24 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 24),
-              
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Divider(color: Colors.grey),
                   ),
-              
+
                   SizedBox(height: 24),
-              
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Text(
-                      'Fresh coconut',
+                      'Fresh fruit',
                       style: GoogleFonts.poppins(fontSize: 16),
                     ),
                   ),
-              
+
+                  SizedBox(height: 10),
+
                   Expanded(
                     child: Consumer<CartModel>(
                       builder: (context, value, child) {
@@ -77,6 +77,12 @@ class HomeScreen extends StatelessWidget {
                               price: value.shopItems[index][1],
                               imageUrl: value.shopItems[index][2],
                               color: value.shopItems[index][3],
+                              onPressed: () {
+                                Provider.of<CartModel>(
+                                  context,
+                                  listen: false,
+                                ).addItemToCard(index);
+                              },
                             );
                           },
                         );
@@ -85,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Center(child: NavBottom()),
-                  SizedBox(height: 40,)
+                  SizedBox(height: 40),
                 ],
               ),
             ),
